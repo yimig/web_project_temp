@@ -1,18 +1,21 @@
-import './res/styles/index.less';
-import 'element-ui/lib/theme-chalk/index.css';
 import 'tailwindcss/tailwind.css'
-import Vue from 'vue';
-import less from 'less';
-import ElementUI from 'element-ui'
-import Comp from "./components/Comp/Comp.vue";
+import 'material-design-icons/iconfont/material-icons.css'
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import Router from './router/Router.vue'
+import axios from '../axios.config.js'
+import Mock from 'mockjs'
+var store = require('store')
 
-Vue.use(less);
-Vue.use(ElementUI);
-new Vue({
-    el:'#content',
-    render:(h,props)=>h(Comp,{
-        props:{
-            text:'Hello World!',
-        },
-    })
-});
+Vue.prototype.$axios = axios
+Vue.prototype.$mock = Mock
+Vue.prototype.$store = store
+Vue.use(VueRouter)
+
+// eslint-disable-next-line no-unused-vars
+const app = new Vue({
+  el: '#content',
+  render (h) {
+    return h(Router)
+  }
+})

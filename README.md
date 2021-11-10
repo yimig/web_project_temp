@@ -1,37 +1,55 @@
 # DEMO
 
+---
 
-### front stack:
+create by someone in sometime
 
-**js:**
- - es6 by babel
- - vue.js 2
+## Bundle Tip
 
-**css:**
- - less
- - postcss 8(autoprefixer)
- - tailwindcss 2 with purgecss
- - element ui
+This project has been created using **webpack-cli**, before you bundle the project, please make sure you have installed node.js and yarn.
 
-**bundle tool:**
- - webpack 5
+Then, run the command below
 
+```
+yarn install
+```
+
+to init modules.
+
+This project use `thread-loader` to reduce bundle time. Please create `cpu.config.js` in project directory,file template like
+
+```javascript
+//javascript worker config
+exports.jsWorkerPool = {
+  workers: 32, // node process number.we recommend use your computer thread number.
+  poolTimeout: 2000 //time to kill node process
+}
+//css worker config
+exports.cssWorkerPool = {
+  workerParallelJobs: 16, // node process number.we recommend use your computer thread number.
+  poolTimeout: 2000 //time to kill node process
+}
+```
+
+Up to here, you could bundle this project.
 
 ---
-notice:make sure you have installed Node.js(v15)
 
-run command
+## Front-end Stack
 
-```
-npm install
-```
+development stack
 
-to download all dependencies.
-It may take some minutes.
-After install complete, run
+|name|description|version| 
+|---|---|---|
+|webpack|bundle tool|5.0.0|
+|tailwindcss|utility-first CSS framework|2.2.16|
+|vue.js|javascript framework|2.6.14|
 
-```
-webpack serve
-```
+tool stack
 
-to launch the project.
+|name|description|version| 
+|---|---|---|
+|eslint|limit code style(standard template)|7.32.0|
+|purgecss|shrink css size|4.0.3|
+|thread-loader|accelerate multi-core computer bundle speed|3.0.4|
+|material-design-icon|icon pack|3.0.2|
